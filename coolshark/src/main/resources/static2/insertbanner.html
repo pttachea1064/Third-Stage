@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="css/eui.css">
+</head>
+<body>
+
+<div id="app">
+    <!--页头组件-->
+    <el-page-header style="background-color: #0095d7;color: white;line-height: 60px"
+                    @back="goBack" content="发布轮播图页面"></el-page-header>
+    <!--分割线-->
+    <el-divider></el-divider>
+    <!--name代表上传文件时 文件的参数名
+        limit="1" 设置只能选择一张图片
+    -->
+    <el-card>
+        <el-upload
+                action="/upload"
+                name="picFile"
+                :limit="1"
+                list-type="picture-card"
+                :on-preview="handlePictureCardPreview"
+                :on-success="handleSuccess"
+                :on-remove="handleRemove">
+            <i class="el-icon-plus"></i>
+        </el-upload>
+        <el-dialog :visible.sync="dialogVisible">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+        <el-button @click="insert()">发布</el-button>
+    </el-card>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="js/vue.js"></script>
+<!-- import JavaScript -->
+<script src="js/eui.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                dialogImageUrl: '',
+                dialogVisible: false,
+                banner:{
+                    url:""
+                }
+            }
+        },
+        methods: {
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+                //当点击删除图片时方法会执行
+                //file代表要删除的文件
+                //file.response代表文件上传成功时 服务器响应的数据(文件名)
+                console.log("文件名="+file.response);
+                //http://localhost:8080/remove?name=xxx.jpg
+                axios.get("/remove?name="+file.response).then(function (response) {
+                    console.log("服务器图片已经删除")
+                })
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+            insert(){
+                //得到用户输入的微博文本内容和图片名 一起提交给服务器
+                if (v.banner.url==""){
+                    alert("图片不能为空!")
+                    return;
+                }
+                axios.post("/banner/insert",v.banner).then(function (response) {
+                    alert("添加完成!");
+                    location.href="/"; //回到首页
+                })
+            },
+            handleSuccess(response,file,fileList){
+                //response=file.response
+                console.log("文件上传完成, 图片名="+response);
+                v.banner.url = response;
+            },
+            goBack(){
+                //返回上一页面
+                history.back();
+            }
+        }
+    })
+</script>
+</html>

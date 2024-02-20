@@ -1,0 +1,13 @@
+### 查詢Banner
+GET http://localhost/banner/list
+
+### 發布BANNER
+POST http://localhost/banner/insert
+Content-Type: application/json
+
+{
+  "url": "8cb90d87-fea1-4f93-8d60-07e2c9e168e1.jpg"
+}
+
+### 基于id删除Banner
+DELETE http://localhost/banner/delete/3

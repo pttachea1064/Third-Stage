@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <!--{{变量}}:插值, 让此处的文本和data里面的变量进行绑定,不依赖某个标签-->
+    <h1>{{info}}</h1>
+    {{info}}
+    <!--v-text=变量, 让元素的文本内容和变量进行绑定-->
+    <p v-text="info"></p>
+    <!--v-html=变量, 让元素的标签内容和变量进行绑定(在info中加加粗标签)-->
+    <p v-html="info"></p>
+</div>
+<!--首先引入框架-->
+<script src="js/vue.js"></script>
+
+<script>
+    let v = new Vue({
+        el:"div",
+        data:{
+            info:"文本相关练习<b>加粗標籤在這</b>"
+        }
+    })
+</script>
+</body>
+</html>

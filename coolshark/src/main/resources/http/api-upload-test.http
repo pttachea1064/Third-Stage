@@ -1,0 +1,13 @@
+### 處理文件上傳操作
+POST  http://localhost/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="picFile"; filename="a.jpg"
+
+
+< d:/b.jpg
+--WebAppBoundary--
+
+###刪除磁碟中的文件 將文件名稱替換成自己上傳成功後的文件名稱
+DELETE  http://localhost:80/remove?name=d7dcca37-d5e4-4fa9-89e6-3828236ae073

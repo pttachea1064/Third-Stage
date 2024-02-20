@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定時器</title>
+</head>
+<body>
+<h1>0</h1>
+<h2>0</h2>
+<script>
+    let count = 0 ;
+    //開啟定時器,每隔1000毫秒(1秒鐘)調用一次f方法
+    //setInterval(方法,時間間隔)
+    setInterval(f,1000);
+    function f(){
+        count++
+        let h = document.querySelector("h1")
+        h.innerText = count;
+    }
+
+    let num = 0;
+    //匿名方法開啟定時器 就是將方法當成參數寫入
+    let timer = setInterval(function (){
+        num++;
+        let h = document.querySelector("h2");
+        h.innerText = num;
+        if(num==50){
+            //停止定時器
+            clearInterval(timer)
+        }
+    },100);
+
+    //開啟只有執行一次的定時器
+    setTimeout(function (){
+        alert("時間到了!")
+    },3000);
+
+</script>
+</body>
+</html>

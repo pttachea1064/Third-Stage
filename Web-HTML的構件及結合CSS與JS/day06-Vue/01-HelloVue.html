@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id = "app">
+    <h1>{{info}}</h1>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    let v = new Vue({
+        el:"#app",//告訴vue對象管理的區域
+        data:{
+            info:"Hello Vue!"
+        }
+    })
+    setTimeout(function (){
+        v.info ="值改變了!";
+
+    },3000)
+</script>
+</body>
+</html>

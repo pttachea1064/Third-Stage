@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+  <!--兩個頁面的時候 用兩個div-->
+
+  <!--v-if=true显示 false不显示
+        isLogin=true代表登录过,会显示登出页面
+        isLogin=false代表未登录,会显示登录页面-->
+  <div v-if="isLogin">
+    <input type="text" v-model="newName">
+    <input type="button" value="添加" @click="arr.push(newName)">
+    <a href="javascript:void(0)" @click="isLogin=false">登出</a>
+  </div>
+
+  <div v-else>
+    <!--如果超链接点击时,不离开此页面需要添加javascript:void(0),作用废掉超链接的跳转功能-->
+    <a href="javascript:void(0)">注册</a>
+    <a href="javascript:void(0)" @click="isLogin=true">登录</a>
+
+  </div>
+
+  <table>
+    <ul>
+      <li v-for="name in arr">{{name}}</li>
+    </ul>
+  </table>
+
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+  let v = new Vue({
+    el:" body>div",
+    data:{
+      arr:["劉備","關羽"],
+      isLogin:false,
+      newName:""
+
+
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="css/eui.css">
+    <style>
+        body {
+            font: 18px "Microsoft YaHei UI";
+            margin: 0;
+        }
+        header a {
+            text-decoration: none;
+            color: #6c6c6c;
+        }
+        header a:hover {
+            color: #0aa1ed;
+        }
+        .el-table .el-table__cell {
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <el-container>
+        <el-header style="padding: 0;height: 150px">
+            <div style="width: 1200px;margin: 0 auto">
+                <img src="imgs/logo.png" style="width: 300px;vertical-align: middle" alt="">
+                <span>
+                <a href="">首页</a><el-divider direction="vertical"></el-divider>
+                <a href="">热点资讯</a><el-divider direction="vertical"></el-divider>
+                <a href="">商家入驻</a><el-divider direction="vertical"></el-divider>
+                <a href="">社会招聘</a><el-divider direction="vertical"></el-divider>
+                <a href="">校园招聘</a><el-divider direction="vertical"></el-divider>
+                <a href="">帮助中心</a>
+            </span>
+            </div>
+            <!--蓝色导航条开始-->
+            <div style="width: 100%;height: 60px;background-color: #82c8ec">
+                <el-menu style="width: 1200px;margin: 0 auto"
+                         default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+                         background-color="#82c8ec"
+                         text-color="#fff"
+                         active-text-color="#fff">
+                    <el-menu-item v-for="c in categoryArr" :index="c.id">{{c.name}}</el-menu-item>
+                    <!--搜索框开始-->
+                    <div style="float: right;margin-top: 15px">
+                        <el-input size="mini" placeholder="请输入关键字搜索"></el-input>
+                        <el-button style="position: absolute;right: 0;top: 11px;border: 0;background-color: rgba(0,0,0,0)" icon="el-icon-search"></el-button>
+                    </div>
+                    <!--搜索框结束-->
+                </el-menu>
+            </div>
+            <!--蓝色导航条结束-->
+        </el-header>
+        <el-main style="width: 1200px;margin: 0 auto">
+            <el-row gutter="20">
+                <el-col span="18">
+                    <!--走马灯开始-->
+                    <el-carousel height="300px">
+                        <el-carousel-item v-for="b in bannerArr">
+                            <img :src="b.url" style="width: 100%;height: 100%;" alt="">
+                        </el-carousel-item>
+                    </el-carousel>
+                    <!--走马灯结束-->
+                </el-col>
+                <el-col span="6">
+                    <!--排行榜开始-->
+                    <el-card height="300px">
+                        <h3><i style="font-weight: bold" class="el-icon-trophy"></i> 销量最高</h3>
+                        <el-divider></el-divider>
+                        <el-table :data="topArr" style="width: 500px">
+                            <el-table-column label="排名" type="index" width="50px"></el-table-column>
+                            <el-table-column label="商品名">
+                                <template slot-scope="scope">
+                                    <a href="" style="text-decoration: none;color: #333">
+                                        {{scope.row.title}}
+                                    </a>
+                                </template>
+                            </el-table-column>
+                            <el-table-column label="销量" prop="saleCount"></el-table-column>
+                        </el-table>
+                    </el-card>
+                    <!--排行榜结束-->
+                </el-col>
+            </el-row>
+            <!--商品列表开始-->
+            <el-row gutter="20">
+                <el-col span="6" v-for="p in productArr">
+                    <el-card>
+                        <div>
+                            <img class="p_img" width="230" height="230" :src="p.url" width="100%">
+                        </div>
+                        <div>
+                            <p style="font-size: 15px;height: 38px;margin-top: 0">{{p.title}}</p>
+                            <div style="color: #6c6c6c">
+                                <span>￥{{p.price}}</span>
+                                <span style="font-size: 12px;text-decoration: line-through">{{p.oldPrice}}</span>
+                                <span style="float: right">销量:{{p.saleCount}}件</span>
+                            </div>
+                        </div>
+                    </el-card>
+                </el-col>
+            </el-row>
+            <!--商品列表结束-->
+        </el-main>
+        <el-footer style="padding: 0">
+            <div style="background-image: url('imgs/wave.png');height: 95px;margin-bottom: -30px"></div>
+            <div style="background-color: #3f3f3f;height: 100px;font-size: 14px;color: #b1b1b1;
+        text-align: center;padding: 30px">
+                <p>Copyright © 北京达内金桥科技有限公司版权所有 京ICP备12003709号-3 京公网安备 11010802029572号</p>
+                <p>涵盖20余门课程体系，致力于打造权威的IT职业教育学习平台</p>
+                <p>达内在线WWW.TMOOC.CN 专注于IT职业技能培训</p>
+            </div>
+        </el-footer>
+    </el-container>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="js/vue.js"></script>
+<!-- import JavaScript -->
+<script src="js/eui.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                bannerArr:[],
+                topArr:[],
+                productArr:[],
+                categoryArr:[]
+            }
+        },
+        methods:{
+            handleSelect(index) {
+                console.log(index);
+            }
+        },
+        created:function () {//created方法是Vue对象创建时执行的方法,一般会把加载完页面请求数据的方法写在此方法中
+            //发出请求获取所有的商品信息
+            axios.get("/product/list/index").then(function (response) {
+                v.productArr = response.data;
+            })
+            //发出请求获取所有分类信息
+            axios.get("/category/list").then(function (response) {
+                v.categoryArr = response.data;
+            })
+            //发出请求获取所有轮播图信息
+            axios.get("/banner/list").then(function (response) {
+                v.bannerArr = response.data;
+            })
+            //发出请求获取排行榜商品信息
+            axios.get("/product/list/top").then(function (response) {
+                v.topArr = response.data;
+            })
+        }
+    })
+</script>
+</html>

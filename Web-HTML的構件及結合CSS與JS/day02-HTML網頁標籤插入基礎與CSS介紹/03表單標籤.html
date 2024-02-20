@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表單標籤</title>
+</head>
+<body>
+<!--action作用於提交內容-->
+<!--name:為控件定義名稱 提交數據時的變數名稱-->
+<!--最大字符長度控制: maxlength-->
+<!--value:設置默認的數值-->
+<!--readonly:將該內容設定為只能讀取-->
+<form action="https://www.baidu.com">
+    帳號:<input type="text" name="username" maxlength="5" value="abc" readonly>
+<!--利用password去做遮掩方式的密碼-->
+    密碼:<input type="password" name="password"><br>
+  <!--單選框架-->
+<!--  通過name內的綁定(gender)成為單選 如果沒有賦予該內容會是多選-->
+<!--  我們通過value是單選必須添加的屬性 為了提交給服務器的數值 否則提交on-->
+<!--  checked默認選中-->
+<!--  利用id去給予數值 然後搭配label for"id數值"去達成點擊文字勾選-->
+ 性別: <input type="radio" name="gender" value="m" checked id="r1">
+<!--  label可以透過點擊文字 選擇該選項 (實現了文本與控件的綁定)-->
+  <label for="r1">男性</label>
+  <input type="radio" name="gender" value="w">女性
+  <br>
+<!--  多選框 通過name設置多個選項的綁定-->
+  興趣愛好:
+  <input type="checkbox" name="hobby" value="cy">抽菸
+  <input type="checkbox" name="hobby" checked value="hj">喝酒
+  <input type="checkbox" name="hobby" value="tt">探探
+  <br>
+  <!-- 日期选择器 -->
+  生日:<input type="date" name="birthday"><br>
+  <!-- 文件选择器 -->
+  靓照:<input type="file" name="pic"><br>
+
+
+<!--  下拉選框-->
+<!--  利用selected去定義默認選項-->
+  所在地:
+  <select name="city">
+    <option value="NewTaipei"selected>新北</option>
+    <option value="Shimen">石門</option>
+    <option value="Laomei">老梅</option>
+
+  </select>
+
+
+  <!--提交按鈕 自動蒐集表單數據-->
+    <input type="submit" value="註冊">
+
+</form>
+</body>
+</html>

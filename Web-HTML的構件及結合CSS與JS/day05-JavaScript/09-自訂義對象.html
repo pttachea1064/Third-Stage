@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+  <caption>商品列表</caption>
+  <tr>
+    <th>商品名</th><th>价格</th><th>库存</th>
+  </tr>
+</table>
+<script>
+  //定義一個空的person 不需要提前定義屬性
+  function Person(){};
+  //實例化對象
+  let p1 = new Person();
+  //動態添加屬性
+  p1.name = "劉老大";
+  p1.age = 60;
+  //動態添加方法
+  p1.run=function (){
+    console.log(this.name + ":" + this.age);
+  }
+  //調用對象的方法
+  p1.run();
+
+  //直接實例化 空對象的方式
+  let p2 = {};
+  p2.name = "關二哥";
+  p2.age = 35;
+  p2.run = function (){
+    console.log(this.name+":"+this.age);
+  }
+  p2.run();
+
+  //直接實例化帶著屬性與方法的對象
+  let p3 = {
+    name:"張小弟",
+    age:40,
+    run:function (){
+      console.log(this.name+":"+this.age);
+    }
+  }
+  p3.run();
+
+
+  //将商品信息封装到一个对象中, 在数组里面装多个表示商品信息的对象
+  let arr = [{title:"小米手机", price:5000, num:500},
+    {title:"华为电视", price:3000, num:100},
+    {title:"vivo手机", price:4000, num:200},
+    {title:"一加手机", price:2000, num:300}]
+
+  //得到table對象
+  let table = document.querySelector("table")
+
+  //遍歷
+  for (let item of arr ) {
+    //創建tr and td
+    let tr = document.createElement("tr");
+    let titleTd = document.createElement("td");
+    let priceTd = document.createElement("td");
+    let numTd = document.createElement("td");
+    //给td添加数据
+    titleTd.innerText = item.title;
+    priceTd.innerText = item.price;
+    numTd.innerText = item.num;
+    //將td放入tr
+    tr.append(titleTd,priceTd,numTd);
+    //將tr放入table
+    table.append(tr);
+  }
+
+</script>
+</body>
+</html>

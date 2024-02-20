@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #d1{
+            width: 100px;
+            height: 100px;
+            border:1px solid red;
+            /*設置外邊距離*/
+            /*margin-left: 100px;*/
+            /*margin-top: 100px;*/
+            /*margin-bottom: 50px;*/
+            margin:10px 20px 30px 40px;
+        }
+        #d2{
+            width: 100px;
+            height: 100px;
+            border: 1px solid blue;
+            margin-top: 100px;
+            /*上下相鄰元素彼此添加外邊距離 會取最大的數值*/
+        }
+        span{
+            border: 1px solid green;
+        }
+        #s1{
+            /*杭內元素上下外邊距離是無效的*/
+            /*margin-top: 100px;*/
+            margin-right: 100px;
+        }
+        #s2{
+            /*左右相鄰的元素添加外邊距離 兩者相加*/
+            margin-left: 50px;
+        }
+
+        #big{
+            width: 200px;
+            height:200px;
+            background-color: pink;
+            /*由於第50行的產生所以我們要解決沾連問題*/
+            overflow:hidden;
+        }
+        #big>div{
+            width: 50px;
+            height: 50px;
+            background-color: brown;
+
+            margin-left: 50px;
+            /* 当元素的上边缘和上级元素的上边缘重叠时,给元素添加上外边距时会出现粘连问题 */
+            margin-top: 50px;
+        }
+        #border_div{
+            width: 200px;
+            height: 200px;
+            border: 10px solid gray;
+            border-radius: 110px ;
+            /*想要圓形的話border-radius要跟width或height一樣或是大於一半*/
+            /*因為border邊框 算在width 和height中所以一半要加上2倍的border*/
+        }
+    </style>
+</head>
+
+<body>
+<div id = "border_div"></div>
+
+<div id = "big">
+    <div></div>
+</div>
+
+<span id ="s1">span1</span><span id = "s2">span2</span>
+
+<div id ="d1">外邊距離測試</div>
+<div id ="d2">div2</div>
+</body>
+</html>

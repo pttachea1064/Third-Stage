@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #l1 {color: red}
+        .c1{color: green}
+
+        input[type='text'],body>p{background-color: yellow}
+
+         body>div>div>p {color: pink}
+       body div div p {background-color: blue }
+
+        a:link{color: green}
+        a:visited{color: red}
+        a:hover{color: yellow}
+        a:active{color: purple}
+    </style>
+<!--
+1. 把刘备改成红色
+
+2. 张飞和苹果改成绿色
+
+3. 文本框(text)和所有水果背景黄色
+
+4. p2 字体粉色
+
+5. p2和p3背景蓝色
+
+6. 超链接未访问绿色,访问过红色,悬停黄,点击紫色
+
+-->
+</head>
+
+<body>
+<ul>
+    <li id ="l1">刘备</li>
+    <li>关羽</li>
+    <li class ="c1">张飞</li>
+</ul>
+
+<p>香蕉</p>
+<p class = "c1">苹果</p>
+<input type="text">
+<input type="password">
+
+<div>
+    <p>p1</p>
+    <div><p>p2</p></div>
+    <div>
+        <div><p>p3</p></div>
+    </div>
+</div>
+<a href="http://www.qq.com">超链接</a>
+</body>
+</html>

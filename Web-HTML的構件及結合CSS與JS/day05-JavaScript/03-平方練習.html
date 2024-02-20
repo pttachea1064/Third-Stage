@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="i1">
+<input type="button" value="平方" onclick="f()">
+<div>结果:<span>0</span></div>
+<script>
+    function f(){
+        let i = document.querySelector("#i1");
+        let s = document.querySelector("span");
+        //因為span是元素 所以要使用innerText來寫
+        if (isNaN(i.value)){
+            s.innerText = "請輸入數字!";
+            return
+        }
+        // s.innerText = i.value*i.value;
+        //四則運算中只有加法不能用上方的寫法 要這樣寫 否則會呈現拼接的結果
+        //第一種強制轉換為數值
+        // s.innerText = i.value*1+i.value*1;
+
+        //第二種 ,parseFloat()將字符串轉換成整數或小數類型
+        s.innerText = parseFloat(i.value)+parseFloat(i.value);
+    }
+</script>
+</body>
+</html>

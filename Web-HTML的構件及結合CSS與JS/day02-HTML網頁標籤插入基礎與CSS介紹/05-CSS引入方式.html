@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--內部樣式:在head標籤中添加style標籤 並添加樣式代碼-->
+<style>
+  h2{
+    color: blue;
+  }
+</style>
+
+<!--外部樣式:引入外部的CSS樣式文件 可以進行多頁面的使用 在head標籤中添加link來實現-->
+<link rel="stylesheet" href="my.css">
+
+<body>
+<!--內聯樣式:直接在標籤內部寫CSS樣式代碼 無法復用 如要使用 要再打一次-->
+<h1 style="color: red">內聯樣式1</h1>
+<h1>內聯樣式2</h1>
+<h1 style="color: red">內聯樣式3</h1>
+
+<!--內部樣式-->
+<h2>內部樣式1</h2>
+<h2>內部樣式2</h2>
+
+<!--外部樣式-->
+<h3>外部樣式1</h3>
+<h3>外部樣式2</h3>
+</body>
+</html>

@@ -1,0 +1,36 @@
+server: #修改端口号为80
+  port: 80
+spring:
+  datasource: #配置连接池 (默认连接池为HikariCP)
+    url: jdbc:mysql://localhost:3306/cs?serverTimezone=Asia/Shanghai&characterEncoding=utf8
+    username: root
+    password: root
+  web:
+    resources: #用於展示輪播圖 需要配置圖片存放位置
+      static-locations: file:D:/file,classpath:static
+  task:
+    execution:
+       pool:
+          queue-capacity: 128
+          core-size: 5
+          max-size: 128
+          keep-alive: 60000
+       thread-name-prefix: db-service-task-
+  async:
+    task:
+      corePoolSize: 10
+      maxPoolSize: 20
+      keepAliveSeconds: 50
+      queueCapacity: 128
+      threadNamePrefix: db-async-service-task-
+
+
+mybatis:
+  configuration:
+    #开启驼峰命名规则 (sale_count-->saleCount)
+    map-underscore-to-camel-case: true
+
+#啟用knife4j的依賴配置
+knife4j:
+  enable: true
+

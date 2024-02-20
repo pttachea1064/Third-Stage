@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>選擇器</title>
+  <style>
+    /*子孫後代選擇器*/
+      body div div p{
+        color: red;
+      }
+    /*子元素選擇器*/
+    div>div>p{color: blue}
+    /*偽類選擇*/
+    a:link{color: red}/*尚未訪問狀態*/
+    a:visited{color: green}/*訪問過的狀態*/
+    a:hover{color: yellow}/*懸停狀態*/
+    a:active{color: pink}/*點擊(不鬆手)的狀態*/
+  </style>
+</head>
+
+<body>
+<a href="https://www.tmooc.cn/">超链接1</a>
+<a href="https://pvp.qq.com/">超链接2</a>
+<a href="https://www.baidu.com/">超链接3</a>
+<p>p1</p>
+
+<div>
+
+  <p>p2</p>
+  <div><p>p3</p></div>
+
+  <div>
+    <p>p4</p>
+    <div><p>p5</p></div>
+  </div>
+
+</div>
+</body>
+</html>

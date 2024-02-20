@@ -1,0 +1,14 @@
+### 帳號密碼測試
+POST http://localhost/user/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user"
+}
+
+###獲取登入後的用戶訊息
+GET http://localhost/user/currentUser
+
+###登出狀態 再去執行11會得到空值
+GET http://localhost/user/logout

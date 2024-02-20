@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess</title>
+
+</head>
+<body>
+<input type="text" placeholder="请输入0-100之间的整数" id="i1">
+<input type="button" value="猜一猜" onclick="f()">
+<input type="button" value="再來一次/刷新" onclick="f1()">
+<div>结果:<span id="s">請輸入猜測值</span></div>
+<div>範圍:<span id="s1">0</span> ~ <span id="s2">100</span></div>
+<script>
+  //0-100隨機整數
+  let x = parseInt(Math.random()*101);//由於會取左方的數值右方放棄所以要的範圍會是101
+  //上方會*101的原因是因為 random()中的數值是0~1之間的小數
+  let i1 = document.querySelector("#i1");
+  let s = document.querySelector("#s");
+  let s1 = document.querySelector("#s1");
+  let s2 = document.querySelector("#s2");
+  let count = 0;
+//藉由添加監聽事件(鍵盤監聽)來達成輸入Enter來觸發
+  //keydown就是 當鍵盤按下某個按鈕,function(event)觸發
+  // {if(event.key===(Enter的代碼就是13){document.getElementById(要執行的方法名稱).click()}}
+  document.addEventListener("keydown", function(event) {
+      if (event.keyCode === 13) {
+          document.getElementById(f()).click();
+      }
+  });
+
+  function f(){
+      count++
+
+      //限制輸入範圍
+      if(i1.value > 100 || i1.value < 0){
+          s.innerText = "請輸入0~100範圍內的整數"
+          return;
+      }
+    //判断输入的值是不是NaN
+    if (isNaN(i1.value)) {
+      s.innerText = "输入错误!";
+      return;
+    }
+
+    //用if循環判斷猜測值是否相等於x的隨機數
+    if (i1.value>x){//由於 變量i1是有輸入的變化數值 所以會要透過打點value來取得數值
+        // 然而x是固定的變量(random)給予的數值 所以不用透過打點來更新
+        s2.innerText = i1.value;
+        s.innerText = "猜大了,請往小的數字去猜測,目前範圍是"+s1.innerText+"~"+s2.innerText;
+    }else if (i1.value< x){
+        s1.innerText = i1.value;
+        s.innerText = "猜小了,請往大的數字去猜測,目前範圍是"+s1.innerText+"~"+s2.innerText;
+      }else{
+        s.innerText = "猜對了!正確結果為:"+i1.value+"總共猜了"+count+"次"
+        //由於猜測完成後會有結果輸出 如若要直接繼續遊戲時我們需要刷新count的次數以及x的隨機數 和範圍的區間
+         x = parseInt(Math.random()*101);
+        s1.innerText=0;
+        s2.innerText=100;
+        count =0;
+    }
+  }
+
+  //直接刷新按鈕的使用方法
+  function f1(){
+      x = parseInt(Math.random()*101);
+      count =0;
+      s1.innerText=0;
+      s2.innerText=100;
+      s.innerText ="請輸入猜測數值範圍是0-100"
+  }
+</script>
+</body>
+</html>

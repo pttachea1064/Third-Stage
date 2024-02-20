@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮" onclick="f1()">
+
+<script>
+  //第一種聲明方法的方式
+  //1. 無參數無返回數值
+  function f1(){
+    console.log("f1");
+  }
+  //調用
+  f1();
+  //2.有參數無返回數值
+  function f2(name,age){
+    console.log(name+":"+age);
+  }
+  f2("小寶",20);
+  //3.無參數有返回數值
+  function f3() {
+    return "我是固定的數值/內容才會被該方法使用"
+  }
+  let info = f3();
+  console.log(info);
+
+  //4.有參數有返回數值
+  function f4(x, y) {
+    return x*y;
+  }
+  let result = f4(8,9);
+  console.log(result);
+
+  //第二種聲明方法的方式
+  let f5 = function (name,age){
+    console.log(name+":"+age);
+  }
+  f5("劉墉",80)
+
+  //第三種方法的聲明方式
+  let f6 = new Function("name","age","console.log(name+':'+age)");
+  f6 ("蘇化",65)
+</script>
+</body>
+</html>

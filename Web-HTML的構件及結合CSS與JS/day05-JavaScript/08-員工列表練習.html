@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="i1" placeholder="姓名">
+<input type="text" id="i2" placeholder="工资">
+<input type="text" id="i3" placeholder="工作">
+<input type="button" value="添加" onclick="f()">
+
+<table border="1px">
+  <tr>
+    <th>姓名</th>
+    <th>工資</th>
+    <th>價格</th>
+  </tr>
+<!--  <tr>-->
+<!--    <td id="t1">姓名</td>-->
+<!--    <td id="t2">工資</td>-->
+<!--    <td id ="t3">價格</td>-->
+<!--  </tr>-->
+
+</table>
+<script>
+  //添加Enter 使用f()
+  document.addEventListener("keydown", function(event) {
+    if (event.keyCode === 13) {
+      document.getElementById(f()).click();
+    }
+  });
+
+  //獲取三個文本框(輸入框內的內容)
+  let i1 = document.querySelector("#i1")
+  let i2 = document.querySelector("#i2")
+  let i3 = document.querySelector("#i3")
+
+  //通過標籤名稱獲取table
+  let table = document.querySelector("table")
+
+  //寫一個 方法 將輸入框中的內容加入到表格中
+  function f(){
+    //创建tr和td
+    let tr = document.createElement("tr");
+    //創建3個td元素去做修改td內容
+    let nameTd = document.createElement("td");
+    let salaryTd = document.createElement("td");
+    let jobTd = document.createElement("td");
+    //把用户输入的内容添加到td中
+    nameTd.innerText = i1.value;
+    salaryTd.innerText = i2.value;
+    jobTd.innerText = i3.value;
+    //把td追加到tr中
+    tr.append(nameTd,salaryTd,jobTd);
+    //把tr追加到table中
+    table.append(tr);
+  }
+</script>
+</body>
+</html>

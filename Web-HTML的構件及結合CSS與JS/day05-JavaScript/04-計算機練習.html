@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CaulatorPractice</title>
+</head>
+<body>
+<input type="text" id ="i1">
+<input type="text" id ="i2">
+<div>結果:<span>0</span></div>
+<input type="button" value="相加" onclick="f1()">
+<input type="button" value="相減" onclick="f2()">
+<input type="button" value="相乘" onclick="f3()">
+<input type="button" value="相除" onclick="f4()">
+
+<script>
+  function f1(){
+    let i1 = document.querySelector("#i1");
+    let i2 = document.querySelector("#i2");
+    let s = document.querySelector("span");
+    if (isNaN(i1.value)){
+      s.innerText = "請輸入數字!";
+      return
+    }
+    if (isNaN(i2.value)){
+      s.innerText = "請輸入數字!";
+      return
+    }
+    s.innerText=parseFloat(i1.value)+parseFloat(i2.value);
+  }
+
+  function f2(){
+    let i1 = document.querySelector("#i1");
+    let i2 = document.querySelector("#i2");
+    let s = document.querySelector("span");
+    if (isNaN(i1.value)){
+      s.innerText = "請輸入數字!";
+      return
+    }
+    if (isNaN(i2.value)){
+      s.innerText = "請輸入數字!";
+      return
+    }
+    s.innerText=i1.value-i2.value;
+  }
+  function f3(){
+    let i1 = document.querySelector("#i1");
+    let i2 = document.querySelector("#i2");
+    let s = document.querySelector("span");
+    if (isNaN(i1.value)){
+      s.innerText = "請輸入數字!";
+      return
+    }
+    if (isNaN(i2.value)){
+      s.innerText = "請輸入數字!";
+      return
+    }
+    s.innerText=i1.value*i2.value;
+  }
+  function f4(){
+    let i1 = document.querySelector("#i1");
+    let i2 = document.querySelector("#i2");
+    let s = document.querySelector("span");
+    if (isNaN(i1.value)){
+      s.innerText = "請輸入數字!";
+      return
+    }
+    if (isNaN(i2.value)){
+      s.innerText = "請輸入數字!";
+      return
+    }
+    s.innerText=i1.value/i2.value;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table border="1">
+        <caption>个人信息</caption>
+        <tr>
+            <td>照片</td><td><img :src="person.imgUrl" width="50px" alt=""></td>
+        </tr>
+        <tr>
+            <td>名字</td><td>{{person.name}}</td>
+        </tr>
+        <tr>
+            <td>年龄</td><td>{{person.age}}</td>
+        </tr>
+        <tr>
+            <td>好友</td>
+            <td><ul>
+                <li v-for=" friend in person.friend">{{friend}}</li>
+            </ul></td>
+        </tr>
+    </table>
+    <input type="button" value="请求数据" @click="f()">
+</div>
+<script src="js/vue.js"></script>
+<script>
+    let v = new Vue({
+        el:"div",
+        data:{
+            person:{name:"xxx",age:"xxx",imgUrl:"head.jpg",friend: ["xxx","xxx"]}
+        },
+        methods:{
+            f() {
+                //模拟从服务器中获取的数据
+                let person = {name:"白敬亭",age:32,imgUrl:"c.jpg",friend:["王嘉尔","撒撒","何老师"]};
+                v.person = person;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

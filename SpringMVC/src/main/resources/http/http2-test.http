@@ -1,0 +1,29 @@
+###查詢所有用戶訊息
+GET http://localhost:8080/user
+
+###通過用戶id查詢用戶訊息
+GET http://localhost:8080/user/1
+
+### 通過id刪除用戶訊息
+DELETE http://localhost:8080/user/5
+
+### 新增用戶訊息(使用者名稱 密碼 暱稱 使用新增的內容時候 用Json格式)
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "username": "小白",
+  "password": "white123",
+  "nickname": "白白"
+}
+
+###更新用戶訊息用id定位出該訊息(使用者名稱 密碼 暱稱 新增時候Content-Type用json格式)
+PUT http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "id":6,
+  "username": "小白",
+  "password": "123white",
+  "nickname": "屬白"
+}

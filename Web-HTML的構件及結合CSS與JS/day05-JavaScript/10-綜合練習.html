@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+  <caption>个人信息</caption>
+  <tr>
+    <td>照片:</td><td><img id="head_img" src="head.jpg" width="50px" alt=""></td>
+  </tr>
+  <tr><td>名字:</td><td id="name_td">xxx</td></tr>
+  <tr><td>年龄:</td><td id="age_td">xxx</td></tr>
+  <tr>
+    <td>好友:</td>
+    <td><ul id="friend_ul"></ul></td>
+  </tr>
+</table>
+<input type="button" value="请求数据" onclick="f()">
+
+<script>
+  document.addEventListener("keydown", function(event) {
+    if (event.keyCode === 13) {
+      document.getElementById(f()).click();
+    }
+  });
+
+  function f(){
+    //模拟从服务器中获取的数据
+    let person = {name:"白敬亭",age:32,url:"c.jpg",friend:["王嘉尔","撒撒","何老师"]};
+    //获取页面中的元素对象
+    let head_img = document.querySelector("#head_img");
+    let name_td = document.querySelector("#name_td");
+    let age_td = document.querySelector("#age_td");
+    let friend_ul = document.querySelector("#friend_ul");
+    //將person對象中的數據取出並賦予數值給葉面中的元素對象
+    head_img.src=person.url
+    name_td.innerText = person.name
+    age_td.innerText = person.age
+
+    //遍歷好友數組內容
+    for (let fn of person.friend) {//因為是無序列表 li,ul
+      //創建Li
+      let li = document.createElement("li")
+      li.innerText = fn ;
+      //將li加入倒ul中
+      friend_ul.append(li);
+      
+    }
+
+
+  }
+</script>
+</body>
+</html>

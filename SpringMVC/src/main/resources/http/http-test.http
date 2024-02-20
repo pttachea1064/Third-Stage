@@ -1,0 +1,29 @@
+### 查詢所有USER的訊息
+GET http://localhost:8080/getUser
+
+### 通過用戶ID查詢用戶訊息
+GET http://localhost:8080/getUserById?id=1
+
+### 新增用戶訊息 application/jason格式 為 這個{}中的內容 從{到}結束
+POST http://localhost:8080/saveUesr
+Content-Type: application/json
+
+{
+  "username": "小天",
+  "password": "123456",
+  "nickname": "天天"
+}
+
+### 更新用戶訊息
+PUT http://localhost:8080/updateUser
+Content-Type: application/json
+
+{
+  "id": 4,
+  "username": "小天",
+  "password": "1234567",
+  "nickname": "天天"
+}
+
+### 刪除用戶訊息
+DELETE http://localhost:8080/deleteUser?id=4

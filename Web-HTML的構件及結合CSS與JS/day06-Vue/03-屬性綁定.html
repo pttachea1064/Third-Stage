@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+  <input type="text" v-bind:value="msg">
+  <input type="text" :value="msg">
+  <a :href="url">百度首頁超連結</a>
+  <img :src="src" alt="" width="200px" height="250px">
+</div>
+<script src="js/vue.js"></script>
+<script>
+  let v = new Vue({
+    el:"div",
+    data:{
+      msg:"屬性綁定測試",
+      url:"https://www.baidu.com",
+      src:"../b.jpg"
+    }
+  })
+</script>
+</body>
+</html>

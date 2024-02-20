@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+  <input type="button" value="botton1" v-on:click="f()">
+<!--@click為v-on:click的簡寫刑事-->
+  <input type="button" value="botton2" @click="ff()">
+  {{info}}
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+  let v = new Vue({
+    el:"div",
+    data:{
+      info:"事件綁定"
+    },
+    methods:{
+      //定義第一種方式方法定義
+      f:function (){
+        v.info="button1 is clicked!";
+      },
+      //定義第二種方法
+      ff(){
+        v.info="button2 is clicked!";
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圖片標籤</title>
+</head>
+<body>
+<!--src資源路徑:
+    1.相對路徑:一般來說訪問站內(當前專案項目中)的資源時使用
+       圖片還頁面在同一個目錄下方:直接寫圖片名稱
+       圖片在頁面的上級目錄:../圖片名稱
+       圖片在頁面的下級目錄:文件夾名稱/圖片名稱
+    2.絕對路徑:一般來說訪問站外資源時候使用,圖片盜鏈
+        (利用其他網頁中的圖片 "複製圖片地址")
+        會有找不到該圖片的風險(因為會被移除等因素存在)
+                -->
+<!--alt:是當圖片顯示失敗時候 會顯示的文本內容-->
+<!--title:圖片標題,鼠標在圖片上停止時會顯示的內容-->
+<!--width/height 兩種賦予數值方式:1.像素  2.上級元素的百分比
+        當只有設定寬度或高度時候,高度/寬度會等比例縮放-->
+<img src="aa.jpg" alt="這是小哆啦">
+<img src="../b.jpg" title="this is a title">
+<img src="abc/c.jpg" width="200px" alt="">
+<img src="abc/c.jpg" height="500" alt="">
+<img src="abc/c.jpg" width="10%" alt="">
+<img src="https://ossweb-img.qq.com/upload/adw/image/194/20230911/2160fea80738599e874e1814dc3a48a6.jpeg" alt="">
+</body>
+</html>
